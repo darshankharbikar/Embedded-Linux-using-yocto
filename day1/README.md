@@ -171,25 +171,35 @@ Workflow of Yocto Project
 ===========================
 Step 1: Download the Poky Source code
 
-```$ git clone git://git.yoctoproject.org/poky```
+```
+$ git clone git://git.yoctoproject.org/poky
+```
 
 Step 2: Checkout the latest branch/release (zeus)
 
-```$ git checkout zeus```
+```
+$ git checkout zeus
+```
 
 Step 3: Prepare the build environment
 - Poky provides you a script 'oe-init-build-env', which should be used to setup the build environment
 - script will set up your environment to use Yocto build system,including adding the BitBake utility to your path
   
-```$ source poky/oe-init-build-env [ build_directory ]```
+```
+$ source poky/oe-init-build-env [ build_directory ]
+```
 - Here build_directory is an optional argument for the name of the directory where the environment is set
 - in case it is not given , it defaults to "build"
 - The above script will move you in a build folder and create two files ( local.conf, bblayers.conf ) inside conf folder
 
 Step 4: Building Linux Distribution
 
-```$ bitbake <image_name>```
-```$ time bitbake core-image-minimal```
+```
+$ bitbake <image_name>
+```
+```
+$ time bitbake core-image-minimal
+```
 
 core-image-minimal
 ----------------------
@@ -208,7 +218,9 @@ Command to run the generated image in QEMU
         • X86_64
 - Poky provides a script 'runqemu' which will allow you to start the QEMU using yocto generated images.
 - The runqemu script is run as:
-  ```$ runqemu <machine> <zimage> <filesystem>```
+  ```
+  $ runqemu <machine> <zimage> <filesystem>
+  ```
 
 - where:
    <machine> is the machine/architecture to use (qemuarm/qemumips/qemuppc/qemux86/qemux86-64)
@@ -229,14 +241,22 @@ Steps to generate ARM image and run in QEMU
 - Set
 MACHINE = "qemuarm"
 
-```$ source poky/oe-init-build-env```
-```$ bitbake core-image-minimal```
-```$ runqemu core-image-minimal```
+```
+$ source poky/oe-init-build-env
+```
+```
+$ bitbake core-image-minimal
+```
+```
+$ runqemu core-image-minimal
+```
 
 Nographic
 -----------
 - You can launch QEMU without the graphic window by adding nographic to the command line
-```$ runqemu qemuarm nographic```
+```
+$ runqemu qemuarm nographic
+```
 
 
 To add a particular package in your root file system
@@ -251,7 +271,9 @@ core-image-sato
 ----------------
 - This is the X11 Window-system-based image with a SATO theme and a GNOME mobile desktop environment
 
-```$ bitbake core-image-sato```
+```
+$ bitbake core-image-sato
+```
 	
 
 Challenge
