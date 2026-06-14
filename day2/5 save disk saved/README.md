@@ -165,6 +165,6 @@ tmp/deploy/rpm/
 
 ---
 
-## Interview Answer
+## Conclusion
 
 IPK, DEB, and RPM are package formats supported by Yocto through the `PACKAGE_CLASSES` variable. IPK uses the lightweight `opkg` package manager and is suitable for resource-constrained embedded systems. DEB uses `dpkg` and `apt`, providing strong dependency management for Debian-based systems. RPM uses `rpm` and `dnf`, offering enterprise-grade package management and rich metadata support. The selection depends on target hardware resources, distribution compatibility, and package management requirements.
