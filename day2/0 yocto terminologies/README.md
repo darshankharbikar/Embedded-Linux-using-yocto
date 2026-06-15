@@ -65,8 +65,7 @@
 or
 Layers are recipe containers (folders)
 - Typical naming convention: meta-<layername>
-- Poky has the following layers:
-- meta, meta-poky, meta-selftest, meta-skeleton, meta-yocto-bsp
+- Poky has the following layers: meta, meta-poky, meta-selftest, meta-skeleton, meta-yocto-bsp
 
 ### Why Layers
 -----------
