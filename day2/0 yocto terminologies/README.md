@@ -3,10 +3,10 @@
 --------------
 - Poky = Bitbake + Metadata
 - Metadata is collection of
-  	- Configuration files (.conf)
-	- Recipes (.bb and .bbappend)
-	- Classes (.bbclass)
-	- Includes (.inc)
+  	- Configuration files (.conf): They tell the build system what to build and put into the image to support a particular platform.
+	- Recipes (.bb and .bbappend) : It set of instructions that is read and processed by the bitbake.
+	- Classes (.bbclass): They are used to abstract common functionality and share it amongst multiple recipe (.bb) files.
+	- Includes (.inc): They store common variables or functions to avoid duplication between recipes.
 
 ## Recipes
 ---------
