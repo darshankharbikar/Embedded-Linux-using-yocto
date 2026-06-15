@@ -39,11 +39,11 @@
 
 ### Types
 --------
-	- Machine Configuration Options
-	- Distribution Configuration Options
-	- Compiler tuning options
-	- General Common Configuration Options
-	- User Configuration Options (local.conf)
+- Machine Configuration Options
+- Distribution Configuration Options
+- Compiler tuning options
+- General Common Configuration Options
+- User Configuration Options (local.conf)
 
 ## classes
 ---------
