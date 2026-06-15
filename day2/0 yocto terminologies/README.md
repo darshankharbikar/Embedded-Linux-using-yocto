@@ -37,7 +37,7 @@
 - They tell the build system what to build and put into the image to support a particular platform
 - Extension: .conf
 
-Types
+### Types
 --------
 	- Machine Configuration Options
 	- Distribution Configuration Options
