@@ -180,6 +180,10 @@ Step 2: Checkout the latest branch/release (zeus)
 ```
 $ git checkout zeus
 ```
+to verfy
+```
+$ git branch
+```
 
 Step 3: Prepare the build environment
 - Poky provides you a script 'oe-init-build-env', which should be used to setup the build environment
