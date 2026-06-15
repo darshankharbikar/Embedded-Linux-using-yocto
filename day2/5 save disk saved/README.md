@@ -1,5 +1,5 @@
 # Saving Disk Space while building Yocto 
-=====================================
+----------------------------------------
 - Yocto Build System can take a lot of disk space during build. But bitbake provides options to preserve disk space
 - You can tell bitbake to delete all the source code, build files after building a particular recipe by adding the following line in local.conf file
 ```
