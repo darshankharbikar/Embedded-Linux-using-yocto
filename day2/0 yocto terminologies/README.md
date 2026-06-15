@@ -3,10 +3,10 @@
 --------------
 - Poky = Bitbake + Metadata
 - Metadata is collection of
-	• Configuration files (.conf)
-	• Recipes (.bb and .bbappend)
-	• Classes (.bbclass)
-	• Includes (.inc)
+  	- Configuration files (.conf)
+	- Recipes (.bb and .bbappend)
+	- Classes (.bbclass)
+	- Includes (.inc)
 
 ## Recipes
 ---------
@@ -14,12 +14,12 @@
 - Yocto: A recipe is a set of instructions that is read and processed by the bitbake
 - Extension of Recipe: .bb
 - A recipe describes:
-    where you get source code
-    which patches to apply
-    Configuration options
-    Compile options (library dependencies)
-    Install
-    License
+    - where you get source code
+    - which patches to apply
+    - Configuration options
+    - Compile options (library dependencies)
+   	- Install
+    - License
 - a software component
 
 ### Examples of Recipes
@@ -31,9 +31,9 @@
 ## Configuration Files
 --------------------
 - Files which hold
-    global definition of variables
-    user defined variables and
-    hardware configuration information
+    - global definition of variables
+    - user defined variables and
+    - hardware configuration information
 - They tell the build system what to build and put into the image to support a particular platform
 - Extension: .conf
 
