@@ -140,7 +140,7 @@ $ sudo dd if=rpi-hwup-image-raspberrypi3.rpi-sdimg of=/dev/sdb bs=4096 && sync
 ```
 
 ## Hardware setup
-================
+-----------------
 - An SD card with image flashed
 - Raspberry Pi 3
 - A power adapter that can supply 5V
@@ -152,6 +152,7 @@ $ sudo dd if=rpi-hwup-image-raspberrypi3.rpi-sdimg of=/dev/sdb bs=4096 && sync
 | 6       | GND (Ground)     |
 | 8       | RXL              |
 | 10      | TXL              |
+
 ## Raspberry Pi Zero W and Yocto
 ------------------------------
 - 1GHz, Single-core CPU
@@ -169,7 +170,7 @@ $ sudo dd if=rpi-hwup-image-raspberrypi3.rpi-sdimg of=/dev/sdb bs=4096 && sync
 - Everything is same except MACHINE = 'raspberrypi0-wifi'
 
 ## Remotely access raspberry pi3
-===============================
+--------------------------------
 ```
 $ bitbake rpi-basic-image
 ```
