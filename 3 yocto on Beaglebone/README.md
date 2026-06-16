@@ -95,26 +95,12 @@ $  bitbake core-image-minimal
 - The kernel initializes and mounts the root filesystem.
 - By default, the root filesystem is contained in the second partition (mmcblk0p2) of the microSD card, formatted for an ext3 file system.
 
-+--------+----------------+----------------+----------+
-| Boot   | Terminology #1 | Terminology #2 | Actual   |
-| stage  |                |                | program  |
-| number |                |                | name     |
-+--------+----------------+----------------+----------+
-| 1      |  Primary       |  -             | ROM code |
-|        |  Program       |                |          |
-|        |  Loader        |                |          |
-|        |                |                |          |
-| 2      |  Secondary     |  1st stage     | u-boot   |
-|        |  Program       |  bootloader    | SPL      |
-|        |  Loader (SPL)  |                |          |
-|        |                |                |          |
-| 3      |  -             |  2nd stage     | u-boot   |
-|        |                |  bootloader    |          |
-|        |                |                |          |
-| 4      |  -             |  -             | kernel   |
-|        |                |                |          |
-+--------+----------------+----------------+----------+
-
+| Boot Stage | Terminology #1            | Terminology #2      | Actual Program Name |
+|------------|---------------------------|---------------------|---------------------|
+| 1          | Primary Program Loader    | -                   | ROM Code            |
+| 2          | Secondary Program Loader (SPL) | 1st Stage Bootloader | U-Boot SPL          |
+| 3          | -                         | 2nd Stage Bootloader | U-Boot              |
+| 4          | -                         | -                   | Linux Kernel        |
 Reference: https://stackoverflow.com/questions/31244862/what-is-the-use-of-spl-secondary-program-loader
 
 Creating partitions and formatting the SD card
@@ -243,10 +229,184 @@ label: ROOT
 - USB-TTL is connected to the J1 connector of BeagleBone in the following formation:
 
 |J1 Pin |USB TTL Function|
+|1|GND Ground|
+|4|RXL|
+|5|TXL|
 
-1               GND Ground
+## Serial setup
+=================
+- BeagleBone Black uses a serial debug port to communicate with the host machine.
+- We will use minicom as a serial terminal client to communicate over the serial port.
+- To set up minicom, perform the following steps:
 
-4               RXL
+1. Run this setup command as a privileged user:
+```
+$  sudo minicom -s
+```
+2. Press E to set the baud rate. Use the A and B keys to navigate the baud rate values. A corresponds to next and B to previous. Keep pressing B till you get 115200 8N1. Then, press Enter to choose this setting and go back to the previous menu.
 
-5               TXL
+3. Next, we need to press F and G to change enablement statuses of hardware flow control and software flow control. Both need to be set to No.
+
+4. Choose Save setup as dfl to avoid reconfiguring every time and choose Exit to go to minicom. Don't exit from it if you want to observe whether there is any activity on the serial port.
+
+
+## Booting BeagleBone
+====================
+- Now that we have everything set up, we are ready to boot.
+- We can just insert this card, and our board should boot from it. 
+- There might be only one issue if you have the eMMC (embedded MultiMediaCard) boot selected by default. 
+-You will have to disable it by booting up the board from the images you already have and renaming the MLO file from the eMMC partition
+- Alternatively, you can simply execute the following two commands on the u-boot prompt. 
+-  To stop at the u-boot prompt, simply press Enter after powering up the board before timeout:
+
+# mmc dev 1
+# mmc erase 0 512
+
+- The first command will select the eMMC card, and the second one will do the erasing so that BeagleBone doesn't try to boot from eMMC.
+- Insert our prepared SD card and power up BeagleBone. You should get an output similar to the following one on minicom:
+```
+Booting from mmc ...
+## Booting kernel from Legacy Image at 82000000 ...
+   Image Name:   Linux-3.14.0-yocto-standard
+   Image Type:   ARM Linux Kernel Image (uncompressed)
+   Data Size:    4985768 Bytes = 4.8 MiB
+   Load Address: 80008000
+   Entry Point:  80008000
+   Verifying Checksum ... OK
+## Flattened Device Tree blob at 88000000
+   Booting using the fdt blob at 0x88000000
+   Loading Kernel Image ... OK
+   Loading Device Tree to 8fff5000, end 8ffff207 ... OK
+Starting kernel …
+```
+- Finally, we will land in our BeagleBone prompt:
+- Poky (Yocto Project Reference Distro) 1.6.1 beaglebone /dev/ttyO0
+```
+beaglebone login:
+
+Enter root as user, and you are in as the root user:
+
+root@beaglebone:~# 
+```
+
+## Bootloaders For BBB
+----------------------
+- **U-Boot** is by far the most common bootloader on the BeagleBone Black, the AM335x SoC can use several alternatives depending on your requirements.
+
+| Bootloader             | Typical Use Case           | Notes                                          |
+| ---------------------- | -------------------------- | ---------------------------------------------- |
+| U-Boot                 | General-purpose Linux boot | Standard choice for BBB                        |
+| Barebox                | Embedded Linux systems     | Modern architecture, Linux-like shell          |
+| Das U-Boot Falcon Mode | Fast boot                  | Uses U-Boot SPL + direct kernel boot           |
+| X-Loader / MLO         | Historical TI platforms    | Predecessor to SPL, largely obsolete           |
+| Coreboot               | Experimental               | Limited support on ARM SoCs like AM335x        |
+| Custom Loader          | RTOS/Bare-metal products   | Often written specifically for the application |
+| TF-A + U-Boot          | Modern ARM64 systems       | Not typically used on AM335x (Cortex-A8)       |
+
+### Barebox
+- Probably the most realistic alternative.
+- Features:
+
+* Linux-style device model
+* Powerful shell
+* Device Tree support
+* Network boot support
+* Fast development workflow
+
+Boot flow:
+
+```text
+ROM Code
+   ↓
+Barebox PBL
+   ↓
+Barebox
+   ↓
+Linux Kernel
+```
+
+Official site:
+
+[Barebox Bootloader](https://www.barebox.org?utm_source=chatgpt.com)
+
+---
+
+### Direct Kernel Boot (No Full U-Boot)
+
+For dedicated products, you can use:
+
+```text
+ROM Code
+   ↓
+SPL / Custom Loader
+   ↓
+Linux Kernel
+```
+
+This reduces boot time because there is no interactive second-stage bootloader.
+
+U-Boot's Falcon Mode is an example:
+
+```text
+ROM Code
+   ↓
+U-Boot SPL
+   ↓
+Linux Kernel
+```
+
+skipping full U-Boot.
+
+---
+
+### Custom Bootloader
+- Many commercial products use:
+
+```text
+ROM Code
+   ↓
+Custom Loader
+   ↓
+Kernel / RTOS
+```
+- Responsibilities:
+
+* DDR initialization
+* Load image from eMMC/SD/NAND
+* Authenticate image (secure boot)
+* Jump to kernel
+
+- This is common when:
+
+* Boot time is critical
+* Memory footprint is constrained
+* No interactive bootloader is needed
+
+---
+
+## Why U-Boot Dominates on BBB
+- The AM335x ROM code expects a very specific boot image format:
+
+```text
+ROM Code
+   ↓
+MLO (SPL)
+   ↓
+U-Boot
+```
+- TI's SDKs, board support packages, and community documentation are built around this flow. As a result:
+
+* DDR initialization code already exists
+* Device Tree support is mature
+* TFTP/NFS boot works out of the box
+* eMMC, SD, USB, Ethernet support is well-tested
+
+- For BSP and Linux kernel development on BeagleBone Black, replacing U-Boot is usually more work than benefit unless you specifically need:
+
+* faster boot,
+* a smaller trusted boot chain,
+* or a custom secure-boot architecture.
+
+- For AM335x/BBB in 2026, the only widely used and actively maintained alternative worth serious consideration is **Barebox**.
+- For production devices, the other common path is **custom SPL → kernel** rather than switching to another full-featured bootloader.
 
