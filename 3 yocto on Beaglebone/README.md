@@ -17,7 +17,7 @@
 
 
 ## Build Yocto Image for BeagleBone Black
-======================================
+------------------------------------------
 - BeagleBone is one of the reference boards of Yocto Project
 ```
 $ source poky/oe-init-build-env build_bbb
@@ -103,8 +103,8 @@ $  bitbake core-image-minimal
 | 4          | -                         | -                   | Linux Kernel        |
 Reference: https://stackoverflow.com/questions/31244862/what-is-the-use-of-spl-secondary-program-loader
 
-Creating partitions and formatting the SD card
-==================================================
+## Creating partitions and formatting the SD card
+------------------------------------------------
 1. Unmount any mounted partition, using the umount command:
 ```
 $  umount /dev/sdb1
@@ -156,8 +156,7 @@ $  sudo fdisk /dev/sdb
 - Calling ioctl() to re-read partition table.
 - Syncing disks.
 
-### Tip: 
-- Do not forget to set the first partition as WIN95 FAT32 (LBA); otherwise, BeagleBone won't be able to boot from it. In this case, you might end up wasting time figuring out what's going wrong.
+### Tip: Do not forget to set the first partition as WIN95 FAT32 (LBA); otherwise, BeagleBone won't be able to boot from it. In this case, you might end up wasting time figuring out what's going wrong.
 
 8. Format the first partition as FAT, using the following command. We will set the label as BOOT so that we know what directory it will be mounted to by udisks:
 ```
@@ -169,7 +168,7 @@ $  sudo mkfs.ext4 -L "ROOT" /dev/sdb2
 ```
 
 ## Copying images to the card
-=============================
+-----------------------------
 - We have formatted our card, according to the requirements. 
 - Now, we are ready to populate images to it. 
 - The partitions are usually auto mounted under /media/$USER
@@ -221,7 +220,7 @@ label: ROOT
 ---
 
 ## Hardware setup
-================
+-----------------
 - An SD card with images flashed
 - BeagleBone Black
 - A power adapter that can supply 5V or a micro USB cable; we should use a 5V power adapter in order to avoid a decrease in the operating frequency
@@ -234,7 +233,7 @@ label: ROOT
 |5|TXL|
 
 ## Serial setup
-=================
+---------------
 - BeagleBone Black uses a serial debug port to communicate with the host machine.
 - We will use minicom as a serial terminal client to communicate over the serial port.
 - To set up minicom, perform the following steps:
@@ -251,7 +250,7 @@ $  sudo minicom -s
 
 
 ## Booting BeagleBone
-====================
+-----------------------
 - Now that we have everything set up, we are ready to boot.
 - We can just insert this card, and our board should boot from it. 
 - There might be only one issue if you have the eMMC (embedded MultiMediaCard) boot selected by default. 
