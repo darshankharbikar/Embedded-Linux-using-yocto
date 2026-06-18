@@ -263,11 +263,10 @@ Step 1: Download the Poky Source code
 ```
 $ git clone git://git.yoctoproject.org/poky
 ```
-
-Step 2: Checkout the latest branch/release (blacksail)
+Step 2: Checkout the latest branch/release (scarthgap, Current LTS version as of 2026)
 - refer: https://wiki.yoctoproject.org/wiki/Releases 
 ```
-$ git checkout blacksail
+$ git checkout scarthgap
 ```
 to verfy
 ```
