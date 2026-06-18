@@ -74,10 +74,79 @@ Prerequisites
         https://www.yoctoproject.org/docs/latest/ref-manual/ref-manual.html#ubuntu-packages
 
 ```
-$ sudo apt-get install gawk wget git-core diffstat unzip texinfo gcc-multilib \
-    build-essential chrpath socat cpio python python3 python3-pip python3-pexpect \
-    xz-utils debianutils iputils-ping python3-git python3-jinja2 libegl1-mesa libsdl1.2-dev \
-    pylint3 xterm
+$ sudo apt update
+```
+```
+$ sudo apt upgrade
+```
+```
+$ sudo apt install gawk
+```
+```
+$ sudo apt install wget
+```
+```
+$ sudo apt install git-core
+```
+```
+$ sudo apt install diffstat
+```
+```
+$ sudo apt install unzip
+```
+```
+$ sudo apt install texinfo
+```
+```
+$ sudo apt install gcc-multilib
+```
+```
+$ sudo apt install build-essential
+```
+```
+$ sudo apt install chrpath
+```
+```
+$ sudo apt install socat
+```
+```
+$ sudo apt install cpio
+```
+```
+$ sudo apt install python
+```
+```
+$ sudo apt install python3
+```
+```
+$ sudo apt install python3-pip
+```
+```
+$ sudo apt install python3-pexpect
+```
+```
+$ sudo apt install xz-utils
+```
+```
+$ sudo apt install debianutils
+```
+```
+$ sudo apt install iputils-ping
+```
+```
+$ sudo apt install python3-git
+```
+```
+$ sudo apt install python3-jinja2
+```
+```
+$ sudo apt install libegl1-mesa
+```
+```
+$ sudo apt install libsdl1.2-dev
+```
+```
+$ sudo apt install pylint3 xterm
 ```
 
 Poky
