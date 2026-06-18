@@ -73,8 +73,7 @@ Prerequisites
 (*) Install the required packages for Yocto to Work from
         https://www.yoctoproject.org/docs/latest/ref-manual/ref-manual.html#ubuntu-packages
 
-## method 1: 
-- download yocto_deps.sh
+- download or copy/paste yocto_deps.sh
 - Run it
 ```
 $ nano yocto_deps.sh
@@ -87,86 +86,6 @@ $ ./yocto_deps.sh
 - For Ubuntu 24.04 and newer, python package no longer exists. If some Yocto scripts require python, add:
 ```
 $ sudo apt install -y python-is-python3
-```
-or 
-## method 2
-- Run each command manually
-		
-
-```
-$ sudo apt update
-```
-```
-$ sudo apt upgrade
-```
-```
-$ sudo apt install gawk
-```
-```
-$ sudo apt install wget
-```
-```
-$ sudo apt install git-core
-```
-```
-$ sudo apt install diffstat
-```
-```
-$ sudo apt install unzip
-```
-```
-$ sudo apt install texinfo
-```
-```
-$ sudo apt install gcc-multilib
-```
-```
-$ sudo apt install build-essential
-```
-```
-$ sudo apt install chrpath
-```
-```
-$ sudo apt install socat
-```
-```
-$ sudo apt install cpio
-```
-```
-$ sudo apt install python
-```
-```
-$ sudo apt install python3
-```
-```
-$ sudo apt install python3-pip
-```
-```
-$ sudo apt install python3-pexpect
-```
-```
-$ sudo apt install xz-utils
-```
-```
-$ sudo apt install debianutils
-```
-```
-$ sudo apt install iputils-ping
-```
-```
-$ sudo apt install python3-git
-```
-```
-$ sudo apt install python3-jinja2
-```
-```
-$ sudo apt install libegl1-mesa
-```
-```
-$ sudo apt install libsdl1.2-dev
-```
-```
-$ sudo apt install pylint3 xterm
 ```
 
 Poky
@@ -263,6 +182,8 @@ Step 1: Download the Poky Source code
 ```
 $ git clone git://git.yoctoproject.org/poky
 ```
+NOTE: replace git:// with https:// if command faces issues
+
 Step 2: Checkout the latest branch/release (scarthgap, Current LTS version as of 2026)
 - refer: https://wiki.yoctoproject.org/wiki/Releases 
 ```
@@ -280,17 +201,18 @@ Step 3: Prepare the build environment
 ```
 $ source poky/oe-init-build-env [ build_directory ]
 ```
-- Here build_directory is an optional argument for the name of the directory where the environment is set
+- Here "build" directory is an default argument for the name of the directory where the environment is set
 - in case it is not given , it defaults to "build"
-- The above script will move you in a build folder and create two files ( local.conf, bblayers.conf ) inside conf folder
+- The above script will move you in a "build" folder and create two files ( local.conf, bblayers.conf ) inside conf folder
 
 Step 4: Building Linux Distribution
+NOTE: do not build as root.
 
 ```
 $ bitbake <image_name>
 ```
 ```
-$ time bitbake core-image-minimal
+$ bitbake core-image-minimal
 ```
 
 core-image-minimal
