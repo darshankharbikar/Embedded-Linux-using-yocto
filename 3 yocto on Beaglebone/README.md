@@ -256,7 +256,7 @@ $  sudo minicom -s
 - Now that we have everything set up, we are ready to boot.
 - We can just insert this card, and our board should boot from it. 
 - There might be only one issue if you have the eMMC (embedded MultiMediaCard) boot selected by default. 
--You will have to disable it by booting up the board from the images you already have and renaming the MLO file from the eMMC partition
+- You will have to disable it by booting up the board from the images you already have and renaming the MLO file from the eMMC partition
 - Alternatively, you can simply execute the following two commands on the u-boot prompt. 
 -  To stop at the u-boot prompt, simply press Enter after powering up the board before timeout:
 
