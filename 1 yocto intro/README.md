@@ -175,10 +175,10 @@ Step 1: Download the Poky Source code
 $ git clone git://git.yoctoproject.org/poky
 ```
 
-Step 2: Checkout the latest branch/release (zeus)
-
+Step 2: Checkout the latest branch/release (blacksail)
+- refer: https://wiki.yoctoproject.org/wiki/Releases 
 ```
-$ git checkout zeus
+$ git checkout blacksail
 ```
 to verfy
 ```
