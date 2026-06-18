@@ -208,13 +208,13 @@ Remove the card from the host machine, and insert it into the SD card slot on Be
 ## Gparted
 -------------
 ---
-#First partition
+First partition
 type: FAT32
 size: around 30MB
 label: BOOT
 flags: boot
 ---
-#Second partition
+Second partition
 type: ext4
 size: around 200MB, or rest of SD-card
 label: ROOT
