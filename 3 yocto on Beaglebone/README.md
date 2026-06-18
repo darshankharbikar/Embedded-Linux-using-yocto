@@ -308,11 +308,11 @@ root@beaglebone:~#
 - Probably the most realistic alternative.
 - Features:
 
-* Linux-style device model
-* Powerful shell
-* Device Tree support
-* Network boot support
-* Fast development workflow
+	* Linux-style device model
+	* Powerful shell
+	* Device Tree support
+	* Network boot support
+	* Fast development workflow
 
 Boot flow:
 
