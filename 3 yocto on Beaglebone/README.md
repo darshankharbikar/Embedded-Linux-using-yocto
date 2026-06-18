@@ -229,6 +229,7 @@ label: ROOT
 - USB-TTL is connected to the J1 connector of BeagleBone in the following formation:
 
 |J1 Pin |USB TTL Function|
+|---|---|
 |1|GND Ground|
 |4|RXL|
 |5|TXL|
