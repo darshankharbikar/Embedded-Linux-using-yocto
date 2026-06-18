@@ -77,16 +77,16 @@ Prerequisites
 - download yocto_deps.sh
 - Run it
 ```
-nano yocto_deps.sh
+$ nano yocto_deps.sh
 ```
 Paste the script, then:
 ```
-chmod +x yocto_deps.sh
-./yocto_deps.sh
+$ chmod +x yocto_deps.sh
+$ ./yocto_deps.sh
 ```
 - For Ubuntu 24.04 and newer, python package no longer exists. If some Yocto scripts require python, add:
 ```
-sudo apt install -y python-is-python3
+$ sudo apt install -y python-is-python3
 ```
 or 
 ## method 2
