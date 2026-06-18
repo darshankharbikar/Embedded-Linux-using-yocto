@@ -73,6 +73,26 @@ Prerequisites
 (*) Install the required packages for Yocto to Work from
         https://www.yoctoproject.org/docs/latest/ref-manual/ref-manual.html#ubuntu-packages
 
+## method 1: 
+- download yocto_deps.sh
+- Run it
+```
+nano yocto_deps.sh
+```
+Paste the script, then:
+```
+chmod +x yocto_deps.sh
+./yocto_deps.sh
+```
+- For Ubuntu 24.04 and newer, python package no longer exists. If some Yocto scripts require python, add:
+```
+sudo apt install -y python-is-python3
+```
+or 
+## method 2
+- Run each command manually
+		
+
 ```
 $ sudo apt update
 ```
