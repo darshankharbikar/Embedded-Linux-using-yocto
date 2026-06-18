@@ -372,16 +372,16 @@ Kernel / RTOS
 ```
 - Responsibilities:
 
-* DDR initialization
-* Load image from eMMC/SD/NAND
-* Authenticate image (secure boot)
-* Jump to kernel
+	* DDR initialization
+	* Load image from eMMC/SD/NAND
+	* Authenticate image (secure boot)
+	* Jump to kernel
 
 - This is common when:
 
-* Boot time is critical
-* Memory footprint is constrained
-* No interactive bootloader is needed
+	* Boot time is critical
+	* Memory footprint is constrained
+	* No interactive bootloader is needed
 
 ---
 
@@ -397,16 +397,16 @@ U-Boot
 ```
 - TI's SDKs, board support packages, and community documentation are built around this flow. As a result:
 
-* DDR initialization code already exists
-* Device Tree support is mature
-* TFTP/NFS boot works out of the box
-* eMMC, SD, USB, Ethernet support is well-tested
+	* DDR initialization code already exists
+	* Device Tree support is mature
+	* TFTP/NFS boot works out of the box
+	* eMMC, SD, USB, Ethernet support is well-tested
 
 - For BSP and Linux kernel development on BeagleBone Black, replacing U-Boot is usually more work than benefit unless you specifically need:
 
-* faster boot,
-* a smaller trusted boot chain,
-* or a custom secure-boot architecture.
+	* faster boot,
+	* a smaller trusted boot chain,
+	* or a custom secure-boot architecture.
 
 - For AM335x/BBB in 2026, the only widely used and actively maintained alternative worth serious consideration is **Barebox**.
 - For production devices, the other common path is **custom SPL → kernel** rather than switching to another full-featured bootloader.
