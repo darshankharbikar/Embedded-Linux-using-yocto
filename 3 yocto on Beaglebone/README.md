@@ -101,7 +101,8 @@ $  bitbake core-image-minimal
 | 2          | Secondary Program Loader (SPL) | 1st Stage Bootloader | U-Boot SPL          |
 | 3          | -                         | 2nd Stage Bootloader | U-Boot              |
 | 4          | -                         | -                   | Linux Kernel        |
-Reference: https://stackoverflow.com/questions/31244862/what-is-the-use-of-spl-secondary-program-loader
+
+## Reference: https://stackoverflow.com/questions/31244862/what-is-the-use-of-spl-secondary-program-loader
 
 ## Creating partitions and formatting the SD card
 ------------------------------------------------
