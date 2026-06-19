@@ -71,7 +71,7 @@ $ bitbake-layers add-layer ~/Yocto_Training/source/meta-ti/
 	$ bitbake-layers add-layer ~/Yocto_Training/source/meta-ti/
 ```
 - Step2 : Open local.conf and set Machine to beaglebone
-	MACHINE='beaglebone'
+	MACHINE_ARCH='beaglebone'
 
 - Step3 : Also add INHERIT += "rm_work" to save disk space
 
