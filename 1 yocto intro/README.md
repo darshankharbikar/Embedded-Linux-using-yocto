@@ -183,7 +183,9 @@ Step 1: Download the Poky Source code
 $ git clone git://git.yoctoproject.org/poky
 ```
 NOTE: replace git:// with https:// if command faces issues
-
+```
+git clone https://git.yoctoproject.org/poky
+```
 Step 2: Checkout the latest branch/release (scarthgap, Current LTS version as of 2026)
 - refer: https://wiki.yoctoproject.org/wiki/Releases 
 ```
