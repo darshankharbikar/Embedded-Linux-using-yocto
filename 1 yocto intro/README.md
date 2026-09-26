@@ -112,11 +112,13 @@ Metadata
 	Commands and data used to indicate what versions of software are used
 	Where they are obtained from
 	Changes or additions to the software itself ( patches ) which are used to fix bugs or customize the software for use in a particular situation
-- Metadata is collection of
-	• Configuration files (.conf)
-	• Recipes (.bb and .bbappend)
-	• Classes (.bbclass)
-	• Includes (.inc)
+**Yocto Metadata** is the collection of files that tells BitBake **what to build, how to build it, and how the final image should be configured**.
+
+* **`.conf`** — Defines build/machine/distribution configuration.
+* **`.bb` / `.bbappend`** — Recipes that describe how software is fetched, configured, compiled, and packaged.
+* **`.bbclass`** — Reusable build logic shared by multiple recipes.
+* **`.inc`** — Common configuration or recipe fragments included by other metadata files.
+
 
 OpenEmbedded Project
 -----------------------
