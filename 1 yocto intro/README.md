@@ -112,7 +112,7 @@ Metadata
 	Commands and data used to indicate what versions of software are used
 	Where they are obtained from
 	Changes or additions to the software itself ( patches ) which are used to fix bugs or customize the software for use in a particular situation
-**Yocto Metadata** is the collection of files that tells BitBake **what to build, how to build it, and how the final image should be configured**.
+- **Yocto Metadata** is the collection of files that tells BitBake **what to build, how to build it, and how the final image should be configured**.
 
 * **`.conf`** — Defines build/machine/distribution configuration.
 * **`.bb` / `.bbappend`** — Recipes that describe how software is fetched, configured, compiled, and packaged.
