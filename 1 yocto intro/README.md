@@ -218,7 +218,10 @@ $ bitbake <image_name>
 ```
 $ bitbake core-image-minimal
 ```
-
+note: if bitbake command fails due to llvm-native failure, execute below command and then restart  from step 3 
+```
+bitbake -c cleanall llvm-native
+```
 core-image-minimal
 ----------------------
 - This is a small image allowing a device to boot, and it is very useful for kernel and boot loader tests and development
